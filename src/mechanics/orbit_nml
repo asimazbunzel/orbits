@@ -1,0 +1,30 @@
+&orbit_controls
+  
+   ! masses of the two bodies (m2 > m1)
+   m1 = 1d0
+   m2 = 10d0
+
+   ! orbital parameters (separation not used yet, only period)
+   separation =  -1d0
+   period = 100d0
+
+   ! more orbital parameters
+   eccentricity = 0.9d0
+
+   ! this is the initial guess for the R-K iterative method
+   initial_dt = 1d-4
+
+   ! stop just after computing this fraction of orbital periods
+   stop_after_this_many_periods = 1.05d0
+
+   ! show terminal output
+   verbose = .true.
+
+   ! write output to file
+   do_history = .true.
+   history_fname = 'orbit_history.data'
+
+   ! relative tolerance for accepting a guess in the R-K method
+   implicit_scheme_tolerance = 1d-6
+
+/
