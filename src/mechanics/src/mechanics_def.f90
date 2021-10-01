@@ -19,7 +19,7 @@
             ! initial timestep
             initial_dt, &
             ! fraction of periods to compute orbit
-            stop_after_n_period, &
+            stop_after_this_many_periods, &
             ! initial position of m2, assume m1 fixed in CM
             x0, y0, &
             ! initial velocity of m2
@@ -28,7 +28,17 @@
             x, y, &
             ! velocity of m2
             vx, vy
+         
+         ! verbosity during evolution loop
+         logical :: verbose
 
+         ! flag to write output to file
+         logical :: do_history
+
+         ! fname of history file
+         character (len=strlen) :: history_fname
+
+         ! tolerance for Runge-Kutta solver
          real(dp) :: implicit_scheme_tolerance
 
       end type orbit_info
@@ -37,7 +47,7 @@
       integer, parameter :: max_orbit_handles = 10
       type(orbit_info), target, save :: orbit_handles(max_orbit_handles)
 
-      logical, parameter :: mechanics_def_dbg = .true.
+      logical, parameter :: mechanics_def_dbg = .false.
 
       contains
      
